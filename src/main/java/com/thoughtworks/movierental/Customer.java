@@ -24,8 +24,6 @@ public class Customer {
     int frequentRenterPoints = 0;
     String result = headerStatement();
     for (Rental rental : rentals) {
-      //determine amounts for rental line
-      double rentalAmount = amountFor(rental);
       // add frequent renter points
       frequentRenterPoints++;
 
@@ -36,8 +34,8 @@ public class Customer {
 
       //show figures for this rental
       result += "\t" + rental.getMovie().getTitle() + "\t" +
-          String.valueOf(rentalAmount) + "\n";
-      totalAmount += rentalAmount;
+          String.valueOf(amountFor(rental)) + "\n";
+      totalAmount += amountFor(rental);
     }
 
     //add footer lines result
