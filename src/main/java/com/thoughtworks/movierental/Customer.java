@@ -22,7 +22,7 @@ public class Customer {
   public String statement() {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
+    String result = headerStatement();
     for (Rental rental : rentals) {
       double thisAmount = 0;
       //determine amounts for rental line
@@ -59,6 +59,10 @@ public class Customer {
     result += "You earned " + String.valueOf(frequentRenterPoints)
         + " frequent renter points";
     return result;
+  }
+
+  private String headerStatement() {
+    return "Rental Record for " + name + "\n";
   }
 }
 
