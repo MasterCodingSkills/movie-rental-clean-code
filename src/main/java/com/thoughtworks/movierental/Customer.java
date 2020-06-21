@@ -28,8 +28,8 @@ public class Customer {
 
       //show figures for this rental
       result += "\t" + rental.getMovie().getTitle() + "\t" +
-          String.valueOf(amountFor(rental)) + "\n";
-      totalAmount += amountFor(rental);
+          String.valueOf(rental.amount()) + "\n";
+      totalAmount += rental.amount();
     }
 
     //add footer lines result
@@ -44,26 +44,6 @@ public class Customer {
     return ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
             &&
             rental.getDaysRented() > 1) ? 2 : 1;
-  }
-
-  private double amountFor(Rental rental) {
-    double amount = 0;
-    switch (rental.getMovie().getPriceCode()) {
-      case Movie.REGULAR:
-        amount += 2;
-        if (rental.getDaysRented() > 2)
-          amount += (rental.getDaysRented() - 2) * 1.5;
-        break;
-      case Movie.NEW_RELEASE:
-        amount += rental.getDaysRented() * 3;
-        break;
-      case Movie.CHILDRENS:
-        amount += 1.5;
-        if (rental.getDaysRented() > 3)
-          amount += (rental.getDaysRented() - 3) * 1.5;
-        break;
-    }
-    return amount;
   }
 
   private String headerStatement() {
