@@ -21,16 +21,10 @@ public class Customer {
 
   public String statement() {
     double totalAmount = 0;
-    int frequentRenterPoints = 0;
+    int totalFrequentRenterPoints = 0;
     String result = headerStatement();
     for (Rental rental : rentals) {
-      // add frequent renter points
-      frequentRenterPoints++;
-
-      // add bonus for a two day new release rental
-      if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-          &&
-          rental.getDaysRented() > 1) frequentRenterPoints++;
+      totalFrequentRenterPoints += frequentRenterPoints(rental);
 
       //show figures for this rental
       result += "\t" + rental.getMovie().getTitle() + "\t" +
@@ -40,9 +34,16 @@ public class Customer {
 
     //add footer lines result
     result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints)
+    result += "You earned " + String.valueOf(totalFrequentRenterPoints)
         + " frequent renter points";
     return result;
+  }
+
+  private int frequentRenterPoints(Rental rental) {
+    // add bonus for a two day new release rental
+    return ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
+            &&
+            rental.getDaysRented() > 1) ? 2 : 1;
   }
 
   private double amountFor(Rental rental) {
