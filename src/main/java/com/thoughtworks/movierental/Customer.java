@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-  private String name;
-  private List<Rental> rentals = new ArrayList<>();
+  private final String name;
+  private final List<Rental> rentals = new ArrayList<>();
 
   public Customer(String name) {
     this.name = name;
@@ -28,13 +28,13 @@ public class Customer {
 
       //show figures for this rental
       result += "\t" + rental.getMovie().getTitle() + "\t" +
-          String.valueOf(rental.amount()) + "\n";
+              rental.amount() + "\n";
       totalAmount += rental.amount();
     }
 
     //add footer lines result
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(totalFrequentRenterPoints)
+    result += "Amount owed is " + totalAmount + "\n";
+    result += "You earned " + totalFrequentRenterPoints
         + " frequent renter points";
     return result;
   }
