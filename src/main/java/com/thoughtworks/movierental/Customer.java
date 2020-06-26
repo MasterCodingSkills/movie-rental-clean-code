@@ -20,22 +20,22 @@ public class Customer {
   }
 
   public String statement() {
-    double totalAmount = 0;
-    int totalFrequentRenterPoints = 0;
-    String statement = headerStatement();
+    return headerStatement() + bodyStatement() + footerStatement();
+  }
 
-    totalFrequentRenterPoints = totalFrequentRenterPoints();
-
+  private String bodyStatement() {
+    String statement = "";
     for (Rental rental : rentals) {
-      //show figures for this rental
       statement += "\t" + rental.getMovie().getTitle() + "\t" +
               rental.amount() + "\n";
     }
-    totalAmount = totalAmount();
+    return statement;
+  }
 
-    //add footer lines statement
-    statement += "Amount owed is " + totalAmount + "\n";
-    statement += "You earned " + totalFrequentRenterPoints
+  private String footerStatement() {
+    String statement = "";
+    statement += "Amount owed is " + totalAmount() + "\n";
+    statement += "You earned " + totalFrequentRenterPoints()
         + " frequent renter points";
     return statement;
   }
