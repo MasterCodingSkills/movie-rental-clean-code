@@ -15,10 +15,6 @@ public class Customer {
     rentals.add(arg);
   }
 
-  public String getName() {
-    return name;
-  }
-
   public String statement() {
     return headerStatement() + bodyStatement() + footerStatement();
   }
@@ -51,16 +47,9 @@ public class Customer {
   private int totalFrequentRenterPoints() {
     int totalFrequentRenterPoints = 0;
     for (Rental rental : rentals) {
-      totalFrequentRenterPoints += frequentRenterPoints(rental);
+      totalFrequentRenterPoints += rental.frequentRenterPoints();
     }
     return totalFrequentRenterPoints;
-  }
-
-  private int frequentRenterPoints(Rental rental) {
-    // add bonus for a two day new release rental
-    return ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-            &&
-            rental.getDaysRented() > 1) ? 2 : 1;
   }
 
   private String headerStatement() {
