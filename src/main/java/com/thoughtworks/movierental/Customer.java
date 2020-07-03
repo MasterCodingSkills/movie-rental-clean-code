@@ -16,24 +16,8 @@ public class Customer {
   }
 
   public String statement() {
-    return headerStatement() + bodyStatement() + footerStatement();
-  }
-
-  private String bodyStatement() {
-    String statement = "";
-    for (Rental rental : rentals) {
-      statement += "\t" + rental.getMovie().getTitle() + "\t" +
-              rental.amount() + "\n";
-    }
-    return statement;
-  }
-
-  private String footerStatement() {
-    String statement = "";
-    statement += "Amount owed is " + totalAmount() + "\n";
-    statement += "You earned " + totalFrequentRenterPoints()
-        + " frequent renter points";
-    return statement;
+    TextStatement textStatement = new TextStatement(name,rentals,totalAmount(),totalFrequentRenterPoints());
+    return textStatement.statement();
   }
 
   private double totalAmount() {
@@ -77,8 +61,5 @@ public class Customer {
     return "<h1>Rental Record for <b>" + name +"</b></h1>";
   }
 
-  private String headerStatement() {
-    return "Rental Record for " + name + "\n";
-  }
 }
 
