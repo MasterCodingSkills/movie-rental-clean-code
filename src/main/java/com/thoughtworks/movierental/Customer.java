@@ -37,28 +37,8 @@ public class Customer {
   }
 
   public String htmlStatement() {
-    return headerHtml() + bodyHtml() + footerHtml();
-  }
-
-  private String bodyHtml() {
-    String statement = "";
-    for (Rental rental : rentals) {
-      statement +=  rental.getMovie().getTitle()  +" "+
-              rental.amount() + "<br>";
-    }
-    return statement;
-  }
-
-  private String footerHtml() {
-    String statement = "";
-    statement += "Amount owed is <b>" + totalAmount() + "</b><br>";
-    statement += "You earned <b>" + totalFrequentRenterPoints()
-            + "</b> frequent renter points";
-    return statement;
-  }
-
-  private String headerHtml() {
-    return "<h1>Rental Record for <b>" + name +"</b></h1>";
+    HtmlStatement htmlStatement = new HtmlStatement(name,rentals,totalAmount(),totalFrequentRenterPoints());
+    return htmlStatement.htmlStatement();
   }
 
 }
