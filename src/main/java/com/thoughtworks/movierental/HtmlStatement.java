@@ -1,22 +1,16 @@
 package com.thoughtworks.movierental;
 
-import java.util.List;
-
 public class HtmlStatement {
 
     private final String name;
-    private final List<Rental> rentals;
-    private final double totalAmount;
-    private final int totalFrequentRenterPoints;
+    private final Rentals rentals;
 
-    public HtmlStatement(String name, List<Rental> rentals, double totalAmount, int totalFrequentRenterPoints) {
+    public HtmlStatement(String name, Rentals rentals) {
         this.name = name;
         this.rentals = rentals;
-        this.totalAmount = totalAmount;
-        this.totalFrequentRenterPoints = totalFrequentRenterPoints;
     }
 
-    public String htmlStatement() {
+    public String statement() {
         return header() + body() + footer();
     }
 
@@ -31,8 +25,8 @@ public class HtmlStatement {
 
     String footer() {
         String statement = "";
-        statement += "Amount owed is <b>" + totalAmount + "</b><br>";
-        statement += "You earned <b>" + totalFrequentRenterPoints
+        statement += "Amount owed is <b>" + rentals.totalAmount() + "</b><br>";
+        statement += "You earned <b>" + rentals.totalFrequentRenterPoints()
                 + "</b> frequent renter points";
         return statement;
     }

@@ -1,19 +1,13 @@
 package com.thoughtworks.movierental;
 
-import java.util.List;
-
 public class TextStatement {
 
     private final String name;
-    private final List<Rental> rentals;
-    private final double totalAmount;
-    private final int totalFrequentRenterPoints;
+    private final Rentals rentals;
 
-    public TextStatement(String name, List<Rental> rentals, double totalAmount, int totalFrequentRenterPoints) {
+    public TextStatement(String name, Rentals rentals) {
         this.name = name;
         this.rentals = rentals;
-        this.totalAmount = totalAmount;
-        this.totalFrequentRenterPoints = totalFrequentRenterPoints;
     }
 
     public String statement() {
@@ -31,8 +25,8 @@ public class TextStatement {
 
     private String footer() {
         String statement = "";
-        statement += "Amount owed is " + totalAmount + "\n";
-        statement += "You earned " + totalFrequentRenterPoints
+        statement += "Amount owed is " + rentals.totalAmount() + "\n";
+        statement += "You earned " + rentals.totalFrequentRenterPoints()
                 + " frequent renter points";
         return statement;
     }
