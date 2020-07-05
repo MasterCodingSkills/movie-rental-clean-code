@@ -15,12 +15,11 @@ public class HtmlStatement {
     }
 
     private String body() {
-        String statement = "";
+        StringBuilder statement = new StringBuilder();
         for (Rental rental : rentals) {
-            statement +=  rental.getMovie().getTitle()  +" "+
-                    rental.amount() + "<br>";
+            statement.append(rental.getMovie().getTitle()).append(" ").append(rental.amount()).append("<br>");
         }
-        return statement;
+        return statement.toString();
     }
 
     String footer() {

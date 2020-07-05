@@ -4,8 +4,8 @@ public class Rental {
 
   public static final int BONUS_FREQUENT_RENTER_POINTS = 2;
   public static final int DEFAULT_FREQUENT_RENTER_POINTS = 1;
-  private int daysRented;
-  private Movie movie;
+  private final int daysRented;
+  private final Movie movie;
 
   public Rental(Movie movie, int daysRented){
     this.movie = movie;
@@ -27,7 +27,7 @@ public class Rental {
       case Movie.NEW_RELEASE:
         amount += daysRented * 3;
         break;
-      case Movie.CHILDRENS:
+      case Movie.CHILDREN:
         amount += 1.5;
         if (daysRented > 3)
           amount += (daysRented - 3) * 1.5;

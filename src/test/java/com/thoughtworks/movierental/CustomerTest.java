@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class CustomerTest {
     @Test
     public void shouldGenerateTextStatement(){
-        Movie chancePeDance = new Movie("chance pe dance", Movie.CHILDRENS);
+        Movie chancePeDance = new Movie("chance pe dance", Movie.CHILDREN);
         Movie don = new Movie("Don", Movie.NEW_RELEASE);
         Movie suryevansham = new Movie("suryevansham", Movie.REGULAR);
 
@@ -27,7 +27,7 @@ public class CustomerTest {
 
     @Test
     public void shouldGenerateHtmlStatement(){
-        Movie chancePeDance = new Movie("chance pe dance", Movie.CHILDRENS);
+        Movie chancePeDance = new Movie("chance pe dance", Movie.CHILDREN);
         Movie don = new Movie("Don", Movie.NEW_RELEASE);
         Movie suryevansham = new Movie("suryevansham", Movie.REGULAR);
 

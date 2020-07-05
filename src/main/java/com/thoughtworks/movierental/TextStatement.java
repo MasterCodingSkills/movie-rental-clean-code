@@ -15,12 +15,11 @@ public class TextStatement {
     }
 
     private String body() {
-        String statement = "";
+        StringBuilder statement = new StringBuilder();
         for (Rental rental : rentals) {
-            statement += "\t" + rental.getMovie().getTitle() + "\t" +
-                    rental.amount() + "\n";
+            statement.append("\t").append(rental.getMovie().getTitle()).append("\t").append(rental.amount()).append("\n");
         }
-        return statement;
+        return statement.toString();
     }
 
     private String footer() {
