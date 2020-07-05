@@ -21,4 +21,17 @@ public class Movie {
     return title;
   }
 
+   Price price() {
+    switch (getPriceCode()) {
+      case REGULAR:
+        return  new RegularPrice();
+      case NEW_RELEASE:
+        return new NewReleasePrice();
+      case CHILDREN:
+        return new ChildrenPrice();
+      default:
+        return null;
+    }
+  }
+
 }
