@@ -2,6 +2,8 @@ package com.thoughtworks.movierental;
 
 public class Rental {
 
+  public static final int BONUS_FREQUENT_RENTAR_POINTS = 2;
+  public static final int DEFAULT_FREQUENT_RENTER_POINTS = 1;
   private int daysRented;
   private Movie movie;
 
@@ -42,6 +44,6 @@ public class Rental {
     // add bonus for a two day new release rental
     return ((getMovie().getPriceCode() == Movie.NEW_RELEASE)
             &&
-            getDaysRented() > 1) ? 2 : 1;
+            getDaysRented() > 1) ? BONUS_FREQUENT_RENTAR_POINTS : DEFAULT_FREQUENT_RENTER_POINTS;
   }
 }
