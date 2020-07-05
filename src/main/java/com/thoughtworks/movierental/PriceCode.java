@@ -1,5 +1,6 @@
 package com.thoughtworks.movierental;
 
-public interface Price {
+public interface PriceCode {
     double amount(int daysRented);
+    int frequentRenterPoints(int daysRented);
 }

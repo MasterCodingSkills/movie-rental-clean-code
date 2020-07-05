@@ -25,7 +25,7 @@ public class CustomerTest {
                 "\tsuryevansham\t9.5\n" +
                 "\tavenger\t4.0\n" +
                 "Amount owed is 48.0\n" +
-                "You earned 5 frequent renter points"));
+                "You earned 7 frequent renter points"));
     }
 
     @Test
@@ -33,18 +33,21 @@ public class CustomerTest {
         Movie chancePeDance = new Movie("chance pe dance", Movie.CHILDREN);
         Movie don = new Movie("Don", Movie.NEW_RELEASE);
         Movie suryevansham = new Movie("suryevansham", Movie.REGULAR);
+        Movie avenger = new Movie("avenger",Movie.BLU_RAY);
 
         Customer manish = new Customer("Manish");
         manish.addRental(new Rental(chancePeDance, 5));
         manish.addRental(new Rental(don, 10));
         manish.addRental(new Rental(suryevansham,7));
+        manish.addRental(new Rental(avenger,1));
 
         assertThat(manish.htmlStatement(),is("<h1>Rental Record for <b>Manish</b></h1>" +
                 "chance pe dance 4.5<br>" +
                 "Don 30.0<br>" +
                 "suryevansham 9.5<br>" +
-                "Amount owed is <b>44.0</b><br>" +
-                "You earned <b>4</b> frequent renter points"));
+                "avenger 4.0<br>" +
+                "Amount owed is <b>48.0</b><br>" +
+                "You earned <b>7</b> frequent renter points"));
     }
 
 

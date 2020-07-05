@@ -14,26 +14,22 @@ public class Movie {
     this.priceCode = priceCode;
   }
 
-  public int getPriceCode() {
-    return priceCode;
-  }
-
   public String getTitle() {
     return title;
   }
 
-   Price price() {
-    switch (getPriceCode()) {
+   PriceCode priceCode() {
+    switch (priceCode) {
       case REGULAR:
-        return  new RegularPrice();
+        return  new RegularPriceCode();
       case NEW_RELEASE:
-        return new NewReleasePrice();
+        return new NewReleasePriceCode();
       case CHILDREN:
-        return new ChildrenPrice();
+        return new ChildrenPriceCode();
       case BLU_RAY:
-        return new BluRayPrice();
+        return new BluRayPriceCode();
       default:
-        return new DefaultPrice();
+        return new DefaultPriceCode();
     }
   }
 
