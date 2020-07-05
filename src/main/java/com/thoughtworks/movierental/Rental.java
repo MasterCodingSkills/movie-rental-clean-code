@@ -19,31 +19,13 @@ public class Rental {
   public double amount() {
     switch (movie.getPriceCode()) {
       case Movie.REGULAR:
-        return regularMovieAmount();
+        return  new RegularPrice().amount(daysRented);
       case Movie.NEW_RELEASE:
-        return newReleaseMovieAmount();
+        return new NewReleasePrice().amount(daysRented);
       case Movie.CHILDREN:
-        return childrenMovieAmount();
+        return new ChildrenPrice().amount(daysRented);
     }
     return 0;
-  }
-
-  private double childrenMovieAmount() {
-    double amount = 1.5;
-    if (daysRented > 3)
-      amount += (daysRented - 3) * 1.5;
-    return amount;
-  }
-
-  private double newReleaseMovieAmount() {
-    return daysRented * 3;
-  }
-
-  private double regularMovieAmount() {
-    double amount = 2;
-    if (daysRented > 2)
-      amount += (daysRented - 2) * 1.5;
-    return amount;
   }
 
   int frequentRenterPoints() {
