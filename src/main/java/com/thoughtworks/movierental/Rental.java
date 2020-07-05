@@ -17,19 +17,15 @@ public class Rental {
   }
 
   public double amount() {
-    double amount = 0;
     switch (movie.getPriceCode()) {
       case Movie.REGULAR:
-        amount = regularMovieAmount();
-        break;
+        return regularMovieAmount();
       case Movie.NEW_RELEASE:
-        amount = newReleaseMovieAmount();
-        break;
+        return newReleaseMovieAmount();
       case Movie.CHILDREN:
-        amount = childrenMovieAmount();
-        break;
+        return childrenMovieAmount();
     }
-    return amount;
+    return 0;
   }
 
   private double childrenMovieAmount() {
