@@ -1,8 +1,5 @@
 package com.thoughtworks.movierental;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customer {
   private final String name;
   private final Rentals rentals = new Rentals();
@@ -16,13 +13,11 @@ public class Customer {
   }
 
   public String statement() {
-    TextStatement textStatement = new TextStatement(name,rentals);
-    return textStatement.statement();
+    return new TextStatement(name,rentals).statement();
   }
 
   public String htmlStatement() {
-    HtmlStatement htmlStatement = new HtmlStatement(name,rentals);
-    return htmlStatement.statement();
+    return new HtmlStatement(name,rentals).statement();
   }
 
 }
